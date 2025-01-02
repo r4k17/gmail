@@ -51,25 +51,27 @@
     </footer>
 
     <script>
-        // Validate email and redirect to password form
+        // Handle the email form submission
         document.getElementById('email-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
+            // Get the email entered by the user
             const email = document.getElementById('email').value.trim();
 
-            // Basic Gmail validation
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-            if (!email || !emailRegex.test(email)) {
-                alert('Please enter a valid Gmail address.');
-                return;
+            // Store the email in localStorage to be used in the password form
+            if (validateEmail(email)) {
+                localStorage.setItem('email', email);
+                window.location.href = 'password.html'; // Redirect to the password form
+            } else {
+                alert("Please enter a valid Gmail address.");
             }
-
-            // Store the email in localStorage
-            localStorage.setItem('email', email);
-
-            // Redirect to the password page after validation
-            window.location.href = 'password.html';
         });
+
+        // Validate the email format
+        function validateEmail(email) {
+            const regex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            return regex.test(email);
+        }
     </script>
 </body>
 </html>
