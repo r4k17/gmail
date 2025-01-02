@@ -43,12 +43,17 @@
                 emailError.classList.remove('hidden');
             } else {
                 emailError.classList.add('hidden');
-                // Redirect to password page
+                
+                // Store the email in localStorage
+                localStorage.setItem('userEmail', email);
+
+                // Redirect to the password page
                 window.location.href = 'password.html';
             }
         });
     </script>
 </body>
 </html>
+
 
 
