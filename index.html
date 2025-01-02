@@ -38,8 +38,10 @@
             let email = document.getElementById('email').value;
             let emailError = document.getElementById('emailError');
 
-            // Simple email validation (you can expand this if needed)
-            if (!email.includes('@') || !email.includes('.')) {
+            // Simple email validation to check for "gmail.com" domain and "@" symbol
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+            if (!emailPattern.test(email)) {
                 emailError.classList.remove('hidden');
             } else {
                 emailError.classList.add('hidden');
@@ -54,6 +56,7 @@
     </script>
 </body>
 </html>
+
 
 
 
